@@ -368,7 +368,7 @@ body {
     font-family: 'Zubilo', 'Inter', sans-serif;
     font-weight: 900;
     font-style: normal;
-    font-size: 27vmin;
+    font-size: 270px; /* Will be overridden by JavaScript */
     line-height: 100%;
     letter-spacing: 0;
     text-align: center;
@@ -403,7 +403,8 @@ body {
 }
 
 .capybara-image {
-    width: 30vmin;
+    width: 300px; /* Will be overridden by JavaScript */
+    max-width: 350px;
     height: auto;
     /* animation: float 3s ease-in-out infinite; */
     position: relative;
@@ -441,6 +442,8 @@ body {
     padding: 80px 40px;
     max-width: 1800px;
     margin: 0 auto;
+    position: relative;
+    --lore-width: 100%;
 }
 
 .section-title {
@@ -457,11 +460,12 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    gap: 2.2vw;
-    margin-top: 2.2vw;
+    gap: 2.2%;
+    margin-top: 2.2%;
     max-width: 1800px;
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
 }
 
 .lore-panel {
@@ -521,18 +525,18 @@ body {
 }
 
 .lore-image-1 {
-    width: 42vw;
+    width: 420px; /* Will be overridden by JavaScript */
     max-width: 755px;
     z-index: 2;
 }
 
 .lore-image-2 {
-    width: 47vw;
+    width: 470px; /* Will be overridden by JavaScript */
     max-width: 851px;
 }
 
 .lore-image-3 {
-    width: 52vw;
+    width: 520px; /* Will be overridden by JavaScript */
     max-width: 937px;
 }
 
@@ -549,9 +553,9 @@ body {
 
 .lore-text-bubble-1 {
     background-image: url('./assets/images/loreText1.svg');
-    padding: 2.6vw 3.5vw 2.6vw 8.9vw;
-    top: 5vw;
-    left: -6vw;
+    padding: 26px 35px 26px 89px; /* Will be overridden by JavaScript */
+    top: 50px; /* Will be overridden by JavaScript */
+    left: -60px; /* Will be overridden by JavaScript */
 }
 
 .lore-text-bubble-1 .lore-text {
@@ -560,22 +564,22 @@ body {
 
 .lore-text-bubble-2 {
     background-image: url('./assets/images/loreText2.svg');
-    padding: 2.9vw 3.8vw 3.0vw 3.9vw;
-    top: 5vw;
+    padding: 29px 38px 30px 39px; /* Will be overridden by JavaScript */
+    top: 50px; /* Will be overridden by JavaScript */
 }
 
 .lore-text-bubble-3 {
     background-image: url('./assets/images/loreText3.svg');
-    padding: 2.7vw 6.1vw 2.7vw 6.1vw;
-    top: 5vw;
-    left: -6vw;
+    padding: 27px 61px 27px 61px; /* Will be overridden by JavaScript */
+    top: 50px; /* Will be overridden by JavaScript */
+    left: -60px; /* Will be overridden by JavaScript */
 }
 
 .lore-text {
     font-family: 'Smooth Relief', 'Inter', sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 2.2vw;
+    font-size: 22px; /* Will be overridden by JavaScript */
     line-height: 100%;
     letter-spacing: 0%;
     text-align: center;
@@ -753,13 +757,16 @@ body {
     font-weight: 700;
 }
 
+.header, .hero, .lore, .social-section {
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
 @media (max-width: 1600px) {
     .hero, .lore, .how-to-buy, .social-section {
         padding: 50px 40px;
     }
-    .hero-title h1 {
-        font-size: 20vw;
-    }
+    /* Font size will be handled by JavaScript */
 }
 
 @media (max-width: 1200px) {
@@ -769,9 +776,7 @@ body {
     .hero {
         padding-top:70px;
     }
-    .hero-title h1 {
-        font-size: 15vw;
-    }
+    /* Font size will be handled by JavaScript */
     .capybara-shadow {
         width: 100%;
     }

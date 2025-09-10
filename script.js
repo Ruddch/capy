@@ -187,6 +187,110 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     `;
     document.head.appendChild(style);
+
+    // Function to calculate lore image sizes based on .lore container width
+    function updateLoreImageSizes() {
+        const loreContainer = document.querySelector('.lore');
+        if (!loreContainer) return;
+
+        const loreWidth = loreContainer.offsetWidth;
+        
+        // Calculate sizes as percentages of .lore width
+        const image1Width = Math.round(loreWidth * 0.42); // 42% of .lore width
+        const image2Width = Math.round(loreWidth * 0.47); // 47% of .lore width  
+        const image3Width = Math.round(loreWidth * 0.52); // 52% of .lore width
+
+        // Apply sizes to images
+        const image1 = document.querySelector('.lore-image-1');
+        const image2 = document.querySelector('.lore-image-2');
+        const image3 = document.querySelector('.lore-image-3');
+
+        if (image1) image1.style.width = image1Width + 'px';
+        if (image2) image2.style.width = image2Width + 'px';
+        if (image3) image3.style.width = image3Width + 'px';
+
+        // Update text bubble padding and positioning
+        const bubble1 = document.querySelector('.lore-text-bubble-1');
+        const bubble2 = document.querySelector('.lore-text-bubble-2');
+        const bubble3 = document.querySelector('.lore-text-bubble-3');
+
+        if (bubble1) {
+            bubble1.style.padding = `${Math.round(loreWidth * 0.026)}px ${Math.round(loreWidth * 0.035)}px ${Math.round(loreWidth * 0.026)}px ${Math.round(loreWidth * 0.089)}px`;
+            bubble1.style.top = Math.round(loreWidth * 0.05) + 'px';
+            bubble1.style.left = Math.round(loreWidth * -0.06) + 'px';
+        }
+
+        if (bubble2) {
+            bubble2.style.padding = `${Math.round(loreWidth * 0.029)}px ${Math.round(loreWidth * 0.038)}px ${Math.round(loreWidth * 0.030)}px ${Math.round(loreWidth * 0.039)}px`;
+            bubble2.style.top = Math.round(loreWidth * 0.05) + 'px';
+        }
+
+        if (bubble3) {
+            bubble3.style.padding = `${Math.round(loreWidth * 0.027)}px ${Math.round(loreWidth * 0.061)}px ${Math.round(loreWidth * 0.027)}px ${Math.round(loreWidth * 0.061)}px`;
+            bubble3.style.top = Math.round(loreWidth * 0.05) + 'px';
+            bubble3.style.left = Math.round(loreWidth * -0.06) + 'px';
+        }
+
+        // Update font size proportionally
+        const loreTexts = document.querySelectorAll('.lore-text');
+        loreTexts.forEach(text => {
+            const fontSize = Math.round(loreWidth * 0.022); // 2.2% of .lore width
+            text.style.fontSize = fontSize + 'px';
+        });
+
+        console.log(`Lore container width: ${loreWidth}px`);
+        console.log(`Image sizes: ${image1Width}px, ${image2Width}px, ${image3Width}px`);
+    }
+
+    // Function to calculate hero element sizes based on .hero container width
+    function updateHeroElementSizes() {
+        const heroContainer = document.querySelector('.hero');
+        if (!heroContainer) return;
+
+        const heroWidth = heroContainer.offsetWidth;
+        const viewportWidth = window.innerWidth;
+        
+        // Calculate hero title font size with responsive scaling
+        const heroTitle = document.querySelector('.hero-title h1');
+        if (heroTitle) {
+            let titleFontSize;
+            
+            // Responsive scaling based on viewport width
+            if (viewportWidth <= 1200) {
+                // For small screens, use 15% of hero width (equivalent to 15vw)
+                titleFontSize = Math.round(heroWidth * 0.14);
+            } else if (viewportWidth <= 1600) {
+                // For medium screens, use 20% of hero width (equivalent to 20vw)
+                titleFontSize = Math.round(heroWidth * 0.14);
+            } else {
+                // For large screens, use 27% of hero width (equivalent to 27vmin)
+                titleFontSize = Math.round(heroWidth * 0.14);
+            }
+            
+            heroTitle.style.fontSize = titleFontSize + 'px';
+        }
+
+        // Calculate capybara image sizes (30vmin equivalent)
+        const capybaraImages = document.querySelectorAll('.capybara-image');
+        capybaraImages.forEach(image => {
+            // 30vmin is roughly 30% of viewport width, but we'll use hero width
+            const imageWidth = Math.round(heroWidth * 0.28);
+            image.style.width = imageWidth + 'px';
+        });
+
+        console.log(`Hero container width: ${heroWidth}px`);
+        console.log(`Viewport width: ${viewportWidth}px`);
+        console.log(`Hero title font size: ${Math.round(heroWidth * 0.27)}px`);
+        console.log(`Capybara image width: ${Math.round(heroWidth * 0.30)}px`);
+    }
+
+    // Call functions on load and resize
+    updateLoreImageSizes();
+    updateHeroElementSizes();
+    window.addEventListener('resize', () => {
+        updateLoreImageSizes();
+        updateHeroElementSizes();
+    });
 });
 
 // Utility function for smooth scrolling
