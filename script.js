@@ -1,5 +1,30 @@
 // CAPY Landing Page JavaScript
 
+// Function to copy contract address
+function copyContractAddress() {
+    const contractAddress = '0x461ec28f77a9a5afe5cf2b99dfa3d48c91391242';
+    navigator.clipboard.writeText(contractAddress).then(() => {
+        // Show feedback
+        const button = document.querySelector('.ca-btn');
+        const originalText = button.textContent;
+        button.textContent = 'Copied!';
+        button.style.background = '#90EE90';
+        
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.style.background = '';
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+        alert('Contract address: ' + contractAddress);
+    });
+}
+
+// Function to open chart
+function openChart() {
+    window.open('https://dexscreener.com/abstract/0x461ec28f77a9a5afe5cf2b99dfa3d48c91391242', '_blank');
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Smooth scrolling for navigation links
     const navButtons = document.querySelectorAll('.nav-btn, .buy-btn');
