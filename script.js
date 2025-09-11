@@ -26,34 +26,59 @@ function openChart() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Smooth scrolling for navigation links
-    const navButtons = document.querySelectorAll('.nav-btn, .buy-btn');
+    // Add click handlers for CA and CHART buttons
+    const caButton = document.querySelector('.ca-btn');
+    const chartButton = document.querySelector('.chart-btn');
+    const bButton = document.querySelector('.buy-btn');
 
-    navButtons.forEach(button => {
-        button.addEventListener('click', function (e) {
+    // CA button handler
+    if (caButton) {
+        caButton.addEventListener('click', function (e) {
             e.preventDefault();
-
+            
             // Add click animation
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 this.style.transform = '';
             }, 150);
 
-            // Handle different button actions
-            if (this.textContent.includes('CA')) {
-                // Scroll to contract address section
-                const contractSection = document.querySelector('.how-to-buy');
-                contractSection.scrollIntoView({ behavior: 'smooth' });
-            } else if (this.textContent.includes('CHART')) {
-                // Placeholder for chart functionality
-                alert('Chart functionality will be added soon!');
-            } else if (this.textContent.includes('BUY')) {
-                // Scroll to how to buy section
-                const buySection = document.querySelector('.how-to-buy');
-                buySection.scrollIntoView({ behavior: 'smooth' });
-            }
+            // Copy contract address
+            copyContractAddress();
         });
-    });
+    }
+
+    // CHART button handler
+    if (chartButton) {
+        chartButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            // Add click animation
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+
+            // Open chart
+            openChart();
+        });
+    }
+
+    // BUY button handler
+    if (bButton) {
+        bButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            // Add click animation
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+
+            // Scroll to how to buy section
+            const buySection = document.querySelector('.how-to-buy');
+            buySection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
 
     // Add floating animation to capybaras
     const capybaras = document.querySelectorAll('.capybara-illustration');
