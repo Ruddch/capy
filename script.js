@@ -97,25 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Add social media link functionality
-    const socialIcons = document.querySelectorAll('.social-icon');
-    socialIcons.forEach(icon => {
-        icon.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            // Add click animation
-            this.style.transform = 'scale(0.9)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 150);
-
-            // Placeholder for social media links
-            const platform = this.classList.contains('telegram') ? 'Telegram' :
-                this.classList.contains('twitter') ? 'Twitter' : 'Discord';
-            alert(`${platform} link will be added soon!`);
-        });
-    });
-
     // Add typing effect to hero title
     const heroTitle = document.querySelector('.hero-title h1');
     if (heroTitle) {
