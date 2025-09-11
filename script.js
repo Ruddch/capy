@@ -237,9 +237,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const fontSize = Math.round(loreWidth * 0.022); // 2.2% of .lore width
             text.style.fontSize = fontSize + 'px';
         });
-
-        console.log(`Lore container width: ${loreWidth}px`);
-        console.log(`Image sizes: ${image1Width}px, ${image2Width}px, ${image3Width}px`);
     }
 
     // Function to calculate hero element sizes based on .hero container width
@@ -277,11 +274,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const imageWidth = Math.round(heroWidth * 0.28);
             image.style.width = imageWidth + 'px';
         });
-
-        console.log(`Hero container width: ${heroWidth}px`);
-        console.log(`Viewport width: ${viewportWidth}px`);
-        console.log(`Hero title font size: ${Math.round(heroWidth * 0.27)}px`);
-        console.log(`Capybara image width: ${Math.round(heroWidth * 0.30)}px`);
     }
 
     // Call functions on load and resize
